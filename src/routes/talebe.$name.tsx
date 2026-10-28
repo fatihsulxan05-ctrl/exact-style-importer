@@ -71,7 +71,7 @@ function StatCard({ label, icon: Icon, value, tone }: { label: string; icon: typ
 
 function TalebeDetay() {
   const { name } = Route.useParams();
-  const student = students.find((s) => s.name === name) ?? students[0];
+  const student = students.find((s) => s.name === name) ?? { name, status: "İyi" as const };
   const [tab, setTab] = useState<(typeof tabs)[number]>("Yoklama");
 
   return (
