@@ -133,7 +133,7 @@ function TalebeDetay() {
                 { ay: "Eyl", namaz: 60, ders: 55 },
                 { ay: "Eki", namaz: 75, ders: 75 },
               ].map((m) => (
-                <div key={m.ay} className="flex flex-1 items-end justify-center gap-2">
+                <div key={m.ay} className="flex h-full flex-1 items-end justify-center gap-2">
                   <div className="w-8 rounded-t-lg bg-good" style={{ height: `${m.namaz}%` }} />
                   <div className="w-8 rounded-t-lg bg-warn" style={{ height: `${m.ders}%` }} />
                 </div>
