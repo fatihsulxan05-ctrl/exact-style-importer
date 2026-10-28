@@ -64,7 +64,7 @@ export const students = [
 export function Avatar({ name, size = "lg" }: { name: string; size?: "lg" | "sm" }) {
   return (
     <div className={`flex shrink-0 items-center justify-center rounded-full bg-primary font-semibold text-primary-foreground ${size === "lg" ? "h-11 w-11 text-base" : "h-9 w-9 text-xs"}`}>
-      {name[0].toUpperCase()}
+      {name.charAt(0).toUpperCase()}
     </div>
   );
 }
