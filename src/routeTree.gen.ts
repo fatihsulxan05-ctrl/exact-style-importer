@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as KagitRouteImport } from './routes/kagit'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as YoklamaRouteImport } from './routes/yoklama'
+import { Route as TalebeNameRouteImport } from './routes/talebe.$name'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const YoklamaRoute = YoklamaRouteImport.update({
   path: '/yoklama',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TalebeNameRoute = TalebeNameRouteImport.update({
+  id: '/talebe/$name',
+  path: '/talebe/$name',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/kagit': typeof KagitRoute
   '/menu': typeof MenuRoute
   '/yoklama': typeof YoklamaRoute
+  '/talebe/$name': typeof TalebeNameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/kagit': typeof KagitRoute
   '/menu': typeof MenuRoute
   '/yoklama': typeof YoklamaRoute
+  '/talebe/$name': typeof TalebeNameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/kagit': typeof KagitRoute
   '/menu': typeof MenuRoute
   '/yoklama': typeof YoklamaRoute
+  '/talebe/$name': typeof TalebeNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/kagit' | '/menu' | '/yoklama'
+  fullPaths: '/' | '/kagit' | '/menu' | '/yoklama' | '/talebe/$name'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/kagit' | '/menu' | '/yoklama'
-  id: '__root__' | '/' | '/kagit' | '/menu' | '/yoklama'
+  to: '/' | '/kagit' | '/menu' | '/yoklama' | '/talebe/$name'
+  id: '__root__' | '/' | '/kagit' | '/menu' | '/yoklama' | '/talebe/$name'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   KagitRoute: typeof KagitRoute
   MenuRoute: typeof MenuRoute
   YoklamaRoute: typeof YoklamaRoute
+  TalebeNameRoute: typeof TalebeNameRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YoklamaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/talebe/$name': {
+      id: '/talebe/$name'
+      path: '/talebe/$name'
+      fullPath: '/talebe/$name'
+      preLoaderRoute: typeof TalebeNameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   KagitRoute: KagitRoute,
   MenuRoute: MenuRoute,
   YoklamaRoute: YoklamaRoute,
+  TalebeNameRoute: TalebeNameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

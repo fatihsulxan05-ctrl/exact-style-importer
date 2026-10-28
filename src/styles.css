@@ -32,6 +32,9 @@
   --color-surface: var(--surface);
   --color-warn: var(--warn);
   --color-good: var(--good);
+  --color-info: var(--info);
+  --color-amber-soft: var(--amber-soft);
+  --color-sky-soft: var(--sky-soft);
   --font-serif: "EB Garamond", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --color-foreground: var(--foreground);
@@ -76,6 +79,9 @@
   --surface: oklch(0.96 0.004 90);
   --warn: oklch(0.75 0.16 65);
   --good: oklch(0.6 0.13 160);
+  --info: oklch(0.6 0.11 230);
+  --amber-soft: oklch(0.95 0.05 85);
+  --sky-soft: oklch(0.95 0.03 230);
   --foreground: oklch(0.2 0.02 160);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
