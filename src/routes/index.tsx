@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Search, User, GraduationCap } from "lucide-react";
 import { AppShell, Avatar, students } from "@/components/app/AppShell";
@@ -36,7 +36,7 @@ function Index() {
       </div>
       <div className="mt-4 overflow-hidden rounded-b-2xl border border-t-0 border-border bg-card">
         {list.map((s, i) => (
-          <div key={s.name} className="flex items-center gap-4 border-b border-border px-8 py-3 last:border-0">
+          <Link key={s.name} to="/talebe/$name" params={{ name: s.name }} className="flex items-center gap-4 border-b border-border px-8 py-3 last:border-0">
             <span className="w-3 text-sm text-muted-foreground">{i + 1}</span>
             <Avatar name={s.name} />
             <div className="flex-1">
@@ -47,7 +47,7 @@ function Index() {
               <span className={`h-1.5 w-1.5 rounded-full ${s.status === "İyi" ? "bg-good" : "bg-warn"}`} />
               {s.status}
             </span>
-          </div>
+          </Link>
         ))}
       </div>
     </AppShell>
