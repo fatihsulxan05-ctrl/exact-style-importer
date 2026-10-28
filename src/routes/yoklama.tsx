@@ -32,25 +32,25 @@ function Yoklama() {
           <p className="text-xs text-muted-foreground">Tarih</p>
           <div className="mt-2 flex items-center gap-2">
             <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
-            <label className="relative rounded-xl border border-border px-5 py-2.5 text-base">
+            <label className="relative whitespace-nowrap rounded-xl border border-border px-4 py-2 text-sm">
               {label}
               <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="absolute inset-0 opacity-0" />
             </label>
           </div>
           <p className="mt-2 font-semibold capitalize text-primary">{day}</p>
         </div>
-        <button className="mb-6 flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm text-primary-foreground">
+        <button className="mb-6 flex items-center gap-2 whitespace-nowrap rounded-xl bg-primary px-3 py-2.5 text-xs text-primary-foreground">
           <Save className="h-4 w-4" /> Yoklamayı Kaydet
         </button>
       </div>
       <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card">
         <div className="flex items-center bg-brand-soft px-4 py-3 text-xs text-muted-foreground">
-          <span className="w-28 text-sm">Adı Soyadı</span>
-          <div className="grid flex-1 grid-cols-6 gap-1 text-center">{cols.map((c) => <span key={c}>{c}</span>)}</div>
+          <span className="w-24 text-sm">Adı Soyadı</span>
+          <div className="grid flex-1 grid-cols-6 gap-1 text-center text-[10px]">{cols.map((c) => <span key={c}>{c}</span>)}</div>
         </div>
         {students.map((s) => (
           <div key={s.name} className="flex items-center border-t border-border px-4 py-3">
-            <div className="flex w-28 items-center gap-3"><Avatar name={s.name} size="sm" /><span>{s.name}</span></div>
+            <div className="flex w-24 items-center gap-3"><Avatar name={s.name} size="sm" /><span>{s.name}</span></div>
             <div className="grid flex-1 grid-cols-6 gap-1">
               {cols.map((c) => {
                 const k = `${s.name}-${c}`;
