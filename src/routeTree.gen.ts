@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KagitRouteImport } from './routes/kagit'
+import { Route as MenuRouteImport } from './routes/menu'
+import { Route as YoklamaRouteImport } from './routes/yoklama'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KagitRoute = KagitRouteImport.update({
+  id: '/kagit',
+  path: '/kagit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YoklamaRoute = YoklamaRouteImport.update({
+  id: '/yoklama',
+  path: '/yoklama',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kagit': typeof KagitRoute
+  '/menu': typeof MenuRoute
+  '/yoklama': typeof YoklamaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kagit': typeof KagitRoute
+  '/menu': typeof MenuRoute
+  '/yoklama': typeof YoklamaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kagit': typeof KagitRoute
+  '/menu': typeof MenuRoute
+  '/yoklama': typeof YoklamaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/kagit' | '/menu' | '/yoklama'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/kagit' | '/menu' | '/yoklama'
+  id: '__root__' | '/' | '/kagit' | '/menu' | '/yoklama'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KagitRoute: typeof KagitRoute
+  MenuRoute: typeof MenuRoute
+  YoklamaRoute: typeof YoklamaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kagit': {
+      id: '/kagit'
+      path: '/kagit'
+      fullPath: '/kagit'
+      preLoaderRoute: typeof KagitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoklama': {
+      id: '/yoklama'
+      path: '/yoklama'
+      fullPath: '/yoklama'
+      preLoaderRoute: typeof YoklamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KagitRoute: KagitRoute,
+  MenuRoute: MenuRoute,
+  YoklamaRoute: YoklamaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
